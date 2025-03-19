@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{fc1e2943-6de6-448d-9cc9-41cf93fe385e}</ProjectGuid>
+    <SubObjectsSortedByName>true</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>false</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>shelf</Name>
+    <ProgramVersion>3.1.4026.14</ProgramVersion>
+    <Application>{368b4963-ffcf-4730-8e3f-c7e5aa10b6d4}</Application>
+    <TypeSystem>{4e214e5b-4e3a-4a1e-b9ee-40e145fa7675}</TypeSystem>
+    <Implicit_Task_Info>{2279306b-5edc-46bd-835b-fc222f2dfc68}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{3c1fd330-b08d-45a8-b5ae-70aa17741a7c}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{25a04f6c-870a-4db0-aeec-15878d9da1a0}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{f0a4074e-7bee-41ab-bcf5-0091bf16b8b5}</LibraryReferences>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="interfaces" />
+    <Folder Include="classes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="classes\Shelf.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\ShelfElement.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="interfaces\IShelf.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="interfaces\IShelfElement.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="main.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shelf.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
+            <v n="Name">"&lt;ProjectRoot&gt;"</v>
+            <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
+              <v>{8F99A816-E488-41E4-9FA3-846536012284}</v>
+              <o>
+                <v n="Name">"{8F99A816-E488-41E4-9FA3-846536012284}"</v>
+                <d n="SubKeys" t="Hashtable" />
+                <d n="Values" t="Hashtable" ckt="String" cvt="String">
+                  <v>DisabledWarningIds</v>
+                  <v>410,5410</v>
+                </d>
+              </o>
+            </d>
+            <d n="Values" t="Hashtable" />
+          </o>
+        </Data>
+        <TypeList>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>

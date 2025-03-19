@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="ShelfElement" Id="{6f2a0f5e-9c15-4f74-a25b-4b294e8cf477}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ShelfElement IMPLEMENTS IShelfElement
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	_id: STRING(ID_SIZE);
+	_isOccupied: BOOL := FALSE;
+END_VAR
+VAR CONSTANT
+	ID_SIZE: INT := 23;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="id" Id="{c916ffda-12ce-4694-bf43-76f1f3687346}">
+      <Declaration><![CDATA[PROPERTY id : STRING(ID_SIZE)
+]]></Declaration>
+      <Get Name="Get" Id="{2cdcb989-e356-4d18-8c1d-d89233812b74}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[id := THIS^._id]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{f10b9992-36e4-4a98-8494-a84393832637}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^._id := id;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="isOccupied" Id="{2a504b2a-6c12-4377-b320-e920663caff7}">
+      <Declaration><![CDATA[{warning 'Add property implementation'}
+PROPERTY isOccupied : BOOL
+]]></Declaration>
+      <Get Name="Get" Id="{a589052c-4414-45b6-9adf-592b846cccd7}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[isOccupied := THIS^._isOccupied;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{061a3683-f41d-4aa8-b9fc-8f65e2212c33}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^._isOccupied := isOccupied;
+]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="IShelf" Id="{f284db6d-1392-46f6-b464-a9431fe4cffb}">
+    <Declaration><![CDATA[INTERFACE IShelf EXTENDS __SYSTEM.IQueryInterface
+]]></Declaration>
+    <Method Name="accept" Id="{68f1dcce-0e90-429e-8202-853ca27590fe}">
+      <Declaration><![CDATA[METHOD accept
+VAR_INPUT
+	visitor: IShelfVisitor;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="createShelf" Id="{fa5c1600-c809-48c7-9832-84730cdcbfe4}">
+      <Declaration><![CDATA[METHOD createShelf : BOOL
+VAR_INPUT
+	nRows: UINT;
+	mColumns: UINT;
+END_VAR
+VAR
+	i, j : UINT;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="getNextFreeSpace" Id="{a75db583-e457-4555-91ad-3b9d9b19f8d3}">
+      <Declaration><![CDATA[METHOD getNextFreeSpace : IShelfElement
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="getNextOccupiedSpace" Id="{0802cca4-3a95-41a2-9a25-2f55f921c8cd}">
+      <Declaration><![CDATA[METHOD getNextOccupiedSpace : IShelfElement
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="getShelfSpaceByPartId" Id="{8a7fb1d2-7c90-4ef1-be25-d9a367ccd3c7}">
+      <Declaration><![CDATA[METHOD getShelfSpaceByPartId : IShelfElement
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="m" Id="{246d4f74-70c3-4d93-a509-1f242d621233}">
+      <Declaration><![CDATA[PROPERTY m : UINT]]></Declaration>
+      <Get Name="Get" Id="{f37d521f-d346-4510-804a-419a5da9aae9}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="n" Id="{0bda7b08-7783-443a-a2c9-3b0924b0433b}">
+      <Declaration><![CDATA[PROPERTY n : UINT]]></Declaration>
+      <Get Name="Get" Id="{8b7a1fe1-fea6-4f44-9c7f-7321704bfbe5}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Method Name="storePart" Id="{bf45d5a5-c04c-41d8-9b4c-21d3ef1d6150}">
+      <Declaration><![CDATA[METHOD storePart : BOOL
+VAR_INPUT
+	element: IShelfElement;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="unloadNextPart" Id="{a07823c0-25d9-47b7-9924-4d72f5336bfb}">
+      <Declaration><![CDATA[METHOD unloadNextPart : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="unloadPartById" Id="{b38da53a-8e36-43d8-b398-1d52ab51a0ae}">
+      <Declaration><![CDATA[METHOD unloadPartById : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

@@ -9,6 +9,11 @@ END_VAR
 VAR
 	rowCount : UINT;
    	columnCount : UINT;
+	spaces: ARRAY[0..MAX_ROWS, 0..MAX_COLUMNS] OF ShelfElement();
+END_VAR
+VAR CONSTANT
+	MAX_COLUMNS: INT := 1000;
+	MAX_ROWS: INT := 1000;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -22,21 +27,18 @@ VAR_INPUT
 END_VAR
 VAR
 	i, j : UINT;
-	spaces: ARRAY[0..MAX_ROWS, 0..MAX_COLUMNS] OF ShelfElement;
 END_VAR
 VAR CONSTANT
-	MAX_ROWS: UINT := 1000;
-	MAX_COLUMNS: UINT := 1000;
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF nRows > 0 AND nRows < MAX_ROWS AND 
-		mColumns > 0 AND mColumns < MAX_COLUMNS THEN
+        <ST><![CDATA[IF nRows > 0 AND nRows < 100 AND 
+		mColumns > 0 AND mColumns < 100 THEN
     rowCount := nRows;
     columnCount := mColumns;
     FOR i := 0 TO nRows DO
         FOR j := 0 TO mColumns DO
-            spaces[i, j] := ShelfElement();
+            // spaces[i, j] := ShelfElement;
             spaces[i, j].id := '';
             spaces[i, j].isOccupied := FALSE;
         END_FOR
@@ -45,6 +47,30 @@ END_VAR
 ELSE
     createShelf := FALSE;
 END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="getNextFreeSpace" Id="{32dc9da4-accb-44dc-a749-0ed0e3a6e98f}">
+      <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
+METHOD getNextFreeSpace : IShelfElement
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="getNextOccupiedSpace" Id="{632fe013-3b30-4c76-815d-4c8939bdcd27}">
+      <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
+METHOD getNextOccupiedSpace : IShelfElement
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="getShelfSpaceByPartId" Id="{511bbb8d-27ef-45bd-82df-09f9fc9580d8}">
+      <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
+METHOD getShelfSpaceByPartId : IShelfElement
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
     <Property Name="m" Id="{49c9368a-155b-4ec9-9182-4096be6564af}">
@@ -74,5 +100,64 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
+    <Method Name="storePart" Id="{656fb05f-8ff9-4960-a16b-c460d0ccd329}">
+      <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
+METHOD storePart : BOOL
+VAR_INPUT
+	element	: IShelfElement;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="unloadNextPart" Id="{f22afc7e-eb53-44fa-bdab-39ad3d421548}">
+      <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
+METHOD unloadNextPart : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="unloadPartById" Id="{d135e5b2-c295-4118-a419-3f9938e966fc}">
+      <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
+METHOD unloadPartById : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="Shelf">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.createShelf">
+      <LineId Id="3" Count="13" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.getNextFreeSpace">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.getNextOccupiedSpace">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.getShelfSpaceByPartId">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.m.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.n.Get">
+      <LineId Id="3" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.storePart">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.unloadNextPart">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.unloadPartById">
+      <LineId Id="1" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

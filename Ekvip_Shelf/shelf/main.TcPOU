@@ -3,14 +3,22 @@
   <POU Name="main" Id="{a5da58b8-5a34-42e4-a5de-1b0ec0c09d5b}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM main
 VAR
-	i: INT :=0;
+	init: BOOL := False;
+	shelf: Shelf();
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[i := i + 1;]]></ST>
+      <ST><![CDATA[IF init THEN
+	shelf.createShelf(10, 10);
+	init := FALSE;
+END_IF;
+]]></ST>
     </Implementation>
     <LineIds Name="main">
+      <LineId Id="3" Count="0" />
       <LineId Id="1" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="4" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

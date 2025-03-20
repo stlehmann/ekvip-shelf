@@ -7,7 +7,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	_id: STRING(ID_SIZE);
+	_part: IPart;
 	_isOccupied: BOOL := FALSE;
 END_VAR
 VAR CONSTANT
@@ -17,26 +17,6 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Property Name="id" Id="{c916ffda-12ce-4694-bf43-76f1f3687346}">
-      <Declaration><![CDATA[PROPERTY id : STRING(ID_SIZE)
-]]></Declaration>
-      <Get Name="Get" Id="{2cdcb989-e356-4d18-8c1d-d89233812b74}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[id := THIS^._id;]]></ST>
-        </Implementation>
-      </Get>
-      <Set Name="Set" Id="{f10b9992-36e4-4a98-8494-a84393832637}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[THIS^._id := id;]]></ST>
-        </Implementation>
-      </Set>
-    </Property>
     <Property Name="isOccupied" Id="{2a504b2a-6c12-4377-b320-e920663caff7}">
       <Declaration><![CDATA[{warning 'Add property implementation'}
 PROPERTY isOccupied : BOOL
@@ -59,13 +39,27 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
+    <Property Name="part" Id="{c916ffda-12ce-4694-bf43-76f1f3687346}">
+      <Declaration><![CDATA[PROPERTY part : IPart
+]]></Declaration>
+      <Get Name="Get" Id="{2cdcb989-e356-4d18-8c1d-d89233812b74}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[part := THIS^._part;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{f10b9992-36e4-4a98-8494-a84393832637}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^._part := part;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <LineIds Name="ShelfElement">
-      <LineId Id="2" Count="0" />
-    </LineIds>
-    <LineIds Name="ShelfElement.id.Get">
-      <LineId Id="2" Count="0" />
-    </LineIds>
-    <LineIds Name="ShelfElement.id.Set">
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="ShelfElement.isOccupied.Get">
@@ -73,6 +67,12 @@ END_VAR
     </LineIds>
     <LineIds Name="ShelfElement.isOccupied.Set">
       <LineId Id="3" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="ShelfElement.part.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="ShelfElement.part.Set">
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <Itf Name="IPart" Id="{2cbcf229-0419-419d-b31c-9dcb81b4e994}">
+    <Declaration><![CDATA[INTERFACE IPart EXTENDS __SYSTEM.IQueryInterface
+
+]]></Declaration>
+    <Property Name="id" Id="{cf3398aa-f18a-402c-9af0-f471b85f6039}">
+      <Declaration><![CDATA[PROPERTY id : String(23)]]></Declaration>
+      <Get Name="Get" Id="{28397749-f62a-4021-98e4-8d0c34db1554}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{6ed364ee-3129-468d-a029-253e6c93c6cb}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+  </Itf>
+</TcPlcObject>

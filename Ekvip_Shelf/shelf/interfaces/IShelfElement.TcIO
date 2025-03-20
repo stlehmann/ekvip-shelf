@@ -3,21 +3,22 @@
   <Itf Name="IShelfElement" Id="{e7e6a03c-e907-449d-820d-42f4fa64c398}">
     <Declaration><![CDATA[INTERFACE IShelfElement EXTENDS __System.IQueryInterface
 ]]></Declaration>
-    <Property Name="id" Id="{8637dcc2-0164-485b-8793-1704ef10be62}">
-      <Declaration><![CDATA[PROPERTY id : STRING(23)]]></Declaration>
-      <Get Name="Get" Id="{7e3041fa-e039-4378-b6a2-a537eed22e9b}">
-        <Declaration><![CDATA[]]></Declaration>
-      </Get>
-      <Set Name="Set" Id="{84692091-b236-4b41-abc2-f93af9faad09}">
-        <Declaration><![CDATA[]]></Declaration>
-      </Set>
-    </Property>
     <Property Name="isOccupied" Id="{547b9917-fc67-4bfb-ae0e-9272d2a52196}">
       <Declaration><![CDATA[PROPERTY isOccupied : BOOL]]></Declaration>
       <Get Name="Get" Id="{33273cc6-5bfa-4954-8eda-7e21e31f4a3a}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
       <Set Name="Set" Id="{0d3febe8-7e58-4dfc-9b31-0a1a489fbee5}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Property Name="part" Id="{8637dcc2-0164-485b-8793-1704ef10be62}">
+      <Declaration><![CDATA[PROPERTY part : IPart
+]]></Declaration>
+      <Get Name="Get" Id="{7e3041fa-e039-4378-b6a2-a537eed22e9b}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{84692091-b236-4b41-abc2-f93af9faad09}">
         <Declaration><![CDATA[]]></Declaration>
       </Set>
     </Property>

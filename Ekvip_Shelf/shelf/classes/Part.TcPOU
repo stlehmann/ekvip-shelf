@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="Part" Id="{145af6aa-7eef-4f55-81b6-6669a433a0e0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Part IMPLEMENTS IPart
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	_id: STRING(23);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="id" Id="{4860a955-db7d-453f-8591-8ce619d56edf}">
+      <Declaration><![CDATA[{warning 'Eigenschaftenimplementierung hinzufügen'}
+PROPERTY id : STRING(23)
+]]></Declaration>
+      <Get Name="Get" Id="{9111c330-3dfa-481a-95c2-1003863ff486}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[id := THIS^._id;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{90b7afc8-23b0-42a6-b0b4-b07adcc8716c}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^._id := id;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <LineIds Name="Part">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Part.id.Get">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Part.id.Set">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

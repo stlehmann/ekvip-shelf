@@ -19,34 +19,22 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
-    <Method Name="createShelf" Id="{1c7e1526-a566-400b-99d3-dd77b3f877fb}">
-      <Declaration><![CDATA[METHOD createShelf : BOOL
+    <Method Name="FB_init" Id="{0a50a784-8334-43a1-ae32-46b761b423d9}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
+METHOD FB_Init: BOOL
 VAR_INPUT
-	nRows: UINT;
-	mColumns: UINT;
-END_VAR
-VAR
-	i, j : UINT;
-END_VAR
-VAR CONSTANT
-END_VAR
-]]></Declaration>
+    bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)   
+	nRows: UINT := 10;
+	mColumns: UINT := 10;
+END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[IF nRows > 0 AND nRows < 100 AND 
-		mColumns > 0 AND mColumns < 100 THEN
-    rowCount := nRows;
-    columnCount := mColumns;
-    FOR i := 0 TO nRows DO
-        FOR j := 0 TO mColumns DO
-            // spaces[i, j] := ShelfElement;
-            spaces[i, j].id := '';
-            spaces[i, j].isOccupied := FALSE;
-        END_FOR
-    END_FOR
-    createShelf := TRUE;
-ELSE
-    createShelf := FALSE;
-END_IF]]></ST>
+        <ST><![CDATA[THIS^.columnCount := mColumns;
+THIS^.rowCount := nRows;
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="getNextFreeSpace" Id="{32dc9da4-accb-44dc-a749-0ed0e3a6e98f}">
@@ -130,9 +118,8 @@ METHOD unloadPartById : BOOL
     <LineIds Name="Shelf">
       <LineId Id="2" Count="0" />
     </LineIds>
-    <LineIds Name="Shelf.createShelf">
-      <LineId Id="3" Count="13" />
-      <LineId Id="2" Count="0" />
+    <LineIds Name="Shelf.FB_init">
+      <LineId Id="1" Count="2" />
     </LineIds>
     <LineIds Name="Shelf.getNextFreeSpace">
       <LineId Id="1" Count="0" />

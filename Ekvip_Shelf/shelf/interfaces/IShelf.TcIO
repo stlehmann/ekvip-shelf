@@ -3,15 +3,6 @@
   <Itf Name="IShelf" Id="{f284db6d-1392-46f6-b464-a9431fe4cffb}">
     <Declaration><![CDATA[INTERFACE IShelf EXTENDS __SYSTEM.IQueryInterface
 ]]></Declaration>
-    <Method Name="createShelf" Id="{fa5c1600-c809-48c7-9832-84730cdcbfe4}">
-      <Declaration><![CDATA[METHOD createShelf : BOOL
-VAR_INPUT
-	nRows: UINT;
-	mColumns: UINT;
-END_VAR
-
-]]></Declaration>
-    </Method>
     <Method Name="getNextFreeSpace" Id="{a75db583-e457-4555-91ad-3b9d9b19f8d3}">
       <Declaration><![CDATA[METHOD getNextFreeSpace : IShelfElement
 VAR_INPUT

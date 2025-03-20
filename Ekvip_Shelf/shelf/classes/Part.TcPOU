@@ -13,6 +13,21 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <Method Name="FB_init" Id="{89a98e80-7f57-4e39-ab81-9a8e28e7e64c}">
+      <Declaration><![CDATA[//FB_Init is always available implicitly and it is used primarily for initialization.
+//The return value is not evaluated. For a specific influence, you can also declare the
+//methods explicitly and provide additional code there with the standard initialization
+//code. You can evaluate the return value.
+METHOD FB_Init: BOOL
+VAR_INPUT
+    bInitRetains: BOOL; // TRUE: the retain variables are initialized (reset warm / reset cold)
+    bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)
+	id: String(23);   
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^._id := id;]]></ST>
+      </Implementation>
+    </Method>
     <Property Name="id" Id="{4860a955-db7d-453f-8591-8ce619d56edf}">
       <Declaration><![CDATA[{warning 'Eigenschaftenimplementierung hinzufügen'}
 PROPERTY id : STRING(23)
@@ -35,6 +50,9 @@ END_VAR
       </Set>
     </Property>
     <LineIds Name="Part">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="Part.FB_init">
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Part.id.Get">

@@ -3,16 +3,23 @@
   <POU Name="main" Id="{a5da58b8-5a34-42e4-a5de-1b0ec0c09d5b}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM main
 VAR
-	init: BOOL := FALSE;
-	shelf: Shelf(10, 10);
-	p: IPart;
+	init: BOOL := True;
+	shelf: Shelf(2, 2);
+	part: Part('mypartid');
+	space: IShelfElement;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF init THEN
+	shelf.storeNextPart(part);
+	init := FALSE;
+END_IF;]]></ST>
     </Implementation>
     <LineIds Name="main">
+      <LineId Id="8" Count="0" />
       <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

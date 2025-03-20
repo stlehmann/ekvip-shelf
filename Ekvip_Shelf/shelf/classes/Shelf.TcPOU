@@ -10,6 +10,8 @@ VAR
 	rowCount : UINT;
    	columnCount : UINT;
 	spaces: ARRAY[0..MAX_ROWS, 0..MAX_COLUMNS] OF ShelfElement();
+	freeSpaces: FB_DataSetFifo;
+	occupiedSpaces: FB_DataSetFifo;
 END_VAR
 VAR CONSTANT
 	MAX_COLUMNS: INT := 1000;
@@ -30,27 +32,45 @@ VAR_INPUT
     bInCopyCode: BOOL;  // TRUE: the instance will be copied to the copy code afterward (online change)   
 	nRows: UINT := 10;
 	mColumns: UINT := 10;
+END_VAR
+VAR
+	i: UINT;
+	j: UINT;
+	k: UINT := 0;
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[THIS^.columnCount := mColumns;
 THIS^.rowCount := nRows;
+
+FOR i:=0 TO nRows DO
+	FOR j:=0 TO mColumns DO
+		THIS^.freeSpaces.A_Add(in := THIS^.spaces[i, j]); 
+	END_FOR
+END_FOR
 ]]></ST>
       </Implementation>
     </Method>
     <Method Name="getNextFreeSpace" Id="{32dc9da4-accb-44dc-a749-0ed0e3a6e98f}">
       <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
 METHOD getNextFreeSpace : IShelfElement
-]]></Declaration>
+VAR
+	freeShelfElement: IShelfElement;
+END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[THIS^.freeSpaces.A_Get( out => freeShelfElement);
+getNextFreeSpace := freeShelfElement;
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="getNextOccupiedSpace" Id="{632fe013-3b30-4c76-815d-4c8939bdcd27}">
       <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
 METHOD getNextOccupiedSpace : IShelfElement
-]]></Declaration>
+VAR
+	occupiedShelfElement: IShelfElement;
+END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[THIS^.occupiedSpaces.A_Get( out => occupiedShelfElement);
+getNextOccupiedSpace := occupiedShelfElement;]]></ST>
       </Implementation>
     </Method>
     <Method Name="getShelfSpaceByPartId" Id="{511bbb8d-27ef-45bd-82df-09f9fc9580d8}">
@@ -88,6 +108,21 @@ END_VAR
         </Implementation>
       </Get>
     </Property>
+    <Method Name="storeNextPart" Id="{daeb8f3f-23fc-4cfd-960d-c361ed5265d3}">
+      <Declaration><![CDATA[METHOD storeNextPart : BOOL
+VAR_INPUT
+	part: IPart;
+END_VAR
+VAR
+	freeShelfElement: IShelfElement;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[freeShelfElement := THIS^.getNextFreeSpace();
+freeShelfElement.part := part;
+occupiedSpaces.A_Add(in:=freeShelfElement);
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="storePart" Id="{656fb05f-8ff9-4960-a16b-c460d0ccd329}">
       <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
 METHOD storePart : BOOL
@@ -120,11 +155,18 @@ METHOD unloadPartById : BOOL
     </LineIds>
     <LineIds Name="Shelf.FB_init">
       <LineId Id="1" Count="2" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="10" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.getNextFreeSpace">
+      <LineId Id="4" Count="0" />
       <LineId Id="1" Count="0" />
+      <LineId Id="3" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.getNextOccupiedSpace">
+      <LineId Id="3" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.getShelfSpaceByPartId">
@@ -136,6 +178,10 @@ METHOD unloadPartById : BOOL
     <LineIds Name="Shelf.n.Get">
       <LineId Id="3" Count="0" />
       <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="Shelf.storeNextPart">
+      <LineId Id="1" Count="2" />
+      <LineId Id="6" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.storePart">
       <LineId Id="1" Count="0" />

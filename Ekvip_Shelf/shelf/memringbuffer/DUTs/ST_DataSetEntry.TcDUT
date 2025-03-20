@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.24">
+  <DUT Name="ST_DataSetEntry" Id="{b4e4ebf9-7b52-4cac-94e5-d0e6996fbe48}">
+    <Declaration><![CDATA[TYPE ST_DataSetEntry :
+STRUCT
+	bFlag	: BOOL;
+	nValue 	: BYTE;
+	sMsg 	: STRING(20) := 'Unknown';
+END_STRUCT
+END_TYPE]]></Declaration>
+    <ObjectProperties />
+  </DUT>
+</TcPlcObject>

@@ -6,11 +6,14 @@
 				<Task Id="3" Priority="1" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
+				<Task Id="4" Priority="20" CycleTime="100000" AmsPort="351" AdtTasks="true">
+					<Name>Standard</Name>
+				</Task>
 			</Tasks>
 		</System>
 		<Plc>
 			<Project GUID="{FC1E2943-6DE6-448D-9CC9-41CF93FE385E}" Name="shelf" PrjFilePath="shelf\shelf.plcproj" TmcFilePath="shelf\shelf.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{B617B3F1-ED70-94D9-1D8F-AD0E8B55FA3F}" TmcPath="shelf\shelf.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{891CB6D2-4319-590F-30AD-E51E26206877}" TmcPath="shelf\shelf.tmc">
 					<Name>shelf Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

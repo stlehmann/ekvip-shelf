@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FifoBuffer" Id="{37cdd66c-c485-4c00-ba23-cc41fbdd6792}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FifoBuffer
+VAR_INPUT
+    bOverwrite : BOOL;
+    in         : IShelfElement;
+END_VAR
+VAR_OUTPUT
+    bOk        : BOOL;
+    nCount     : UDINT;
+    nLoad      : UDINT;
+    out        : IShelfElement;
+END_VAR
+VAR
+    arrBuffer  : ARRAY[0..MAX_BUFFER_SIZE] OF BYTE; (* Buffer memory used by FB_MemRingBuffer function block *)
+    fbBuffer   : FB_MemRingBuffer;
+END_VAR
+VAR CONSTANT
+    MAX_BUFFER_SIZE : UDINT := 1000;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="FifoBuffer">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

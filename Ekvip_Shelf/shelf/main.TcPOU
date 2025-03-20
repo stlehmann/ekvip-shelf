@@ -13,7 +13,9 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF addPart1 THEN
+      <ST><![CDATA[// Main function for testing some functionality
+
+IF addPart1 THEN
 	shelf.storeNextPart(part1);
 	addPart1 := FALSE;
 END_IF;
@@ -27,17 +29,17 @@ IF getShelfSpaceByPartId THEN
 	shelfElement := shelf.getShelfSpaceByPartId('part2');
 	getShelfSpaceByPartId := FALSE;
 END_IF;
-
 ]]></ST>
     </Implementation>
     <LineIds Name="main">
+      <LineId Id="46" Count="1" />
       <LineId Id="30" Count="3" />
       <LineId Id="41" Count="0" />
       <LineId Id="40" Count="0" />
       <LineId Id="42" Count="0" />
       <LineId Id="34" Count="0" />
       <LineId Id="43" Count="1" />
-      <LineId Id="35" Count="4" />
+      <LineId Id="35" Count="3" />
       <LineId Id="17" Count="0" />
     </LineIds>
   </POU>

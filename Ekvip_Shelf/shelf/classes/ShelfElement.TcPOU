@@ -7,6 +7,8 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
+	_column: UINT;
+	_row: UINT;
 	_part: IPart;
 	_isOccupied: BOOL := FALSE;
 END_VAR
@@ -17,6 +19,28 @@ END_VAR
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <Property Name="column" Id="{aa8a5e52-59c4-4342-a304-1dd0b44b8985}">
+      <Declaration><![CDATA[{warning 'Add property implementation'}
+PROPERTY column : UINT
+]]></Declaration>
+      <Get Name="Get" Id="{1daddbeb-a043-4214-9d9c-8c3683ea7fca}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[column := THIS^._column;
+]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{5db82213-5270-42c5-9568-58d36fdeccca}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^._column := column;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
     <Property Name="isOccupied" Id="{2a504b2a-6c12-4377-b320-e920663caff7}">
       <Declaration><![CDATA[{warning 'Add property implementation'}
 PROPERTY isOccupied : BOOL
@@ -29,15 +53,6 @@ END_VAR
           <ST><![CDATA[isOccupied := THIS^._isOccupied;]]></ST>
         </Implementation>
       </Get>
-      <Set Name="Set" Id="{061a3683-f41d-4aa8-b9fc-8f65e2212c33}">
-        <Declaration><![CDATA[VAR
-END_VAR
-]]></Declaration>
-        <Implementation>
-          <ST><![CDATA[THIS^._isOccupied := isOccupied;
-]]></ST>
-        </Implementation>
-      </Set>
     </Property>
     <Property Name="part" Id="{c916ffda-12ce-4694-bf43-76f1f3687346}">
       <Declaration><![CDATA[PROPERTY part : IPart
@@ -50,30 +65,77 @@ END_VAR
           <ST><![CDATA[part := THIS^._part;]]></ST>
         </Implementation>
       </Get>
-      <Set Name="Set" Id="{f10b9992-36e4-4a98-8494-a84393832637}">
+    </Property>
+    <Property Name="row" Id="{e6212232-f711-4aab-9909-078a292f0057}">
+      <Declaration><![CDATA[{warning 'Add property implementation'}
+PROPERTY row : UINT
+]]></Declaration>
+      <Get Name="Get" Id="{77458111-bf9f-44c6-a710-f92c3f6d04b5}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[THIS^._part := part;]]></ST>
+          <ST><![CDATA[row := THIS^._row;
+]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{75016cb3-d77c-4155-93b4-66727d594785}">
+        <Declaration><![CDATA[
+VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[THIS^._row := row;]]></ST>
         </Implementation>
       </Set>
     </Property>
+    <Method Name="store" Id="{d03deb56-dd3a-4914-9641-9f02a7ac7851}">
+      <Declaration><![CDATA[METHOD store : BOOL
+VAR_INPUT
+	part: IPart;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^._part := part;
+THIS^._isOccupied := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="unload" Id="{b6c15e1d-567b-4207-bf09-d6438fff3f79}">
+      <Declaration><![CDATA[METHOD unload : IPart
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[unload := THIS^.part;
+THIS^._part := 0;]]></ST>
+      </Implementation>
+    </Method>
     <LineIds Name="ShelfElement">
       <LineId Id="2" Count="0" />
     </LineIds>
-    <LineIds Name="ShelfElement.isOccupied.Get">
-      <LineId Id="2" Count="0" />
+    <LineIds Name="ShelfElement.column.Get">
+      <LineId Id="1" Count="1" />
     </LineIds>
-    <LineIds Name="ShelfElement.isOccupied.Set">
-      <LineId Id="3" Count="0" />
+    <LineIds Name="ShelfElement.column.Set">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="ShelfElement.isOccupied.Get">
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="ShelfElement.part.Get">
       <LineId Id="2" Count="0" />
     </LineIds>
-    <LineIds Name="ShelfElement.part.Set">
-      <LineId Id="2" Count="0" />
+    <LineIds Name="ShelfElement.row.Get">
+      <LineId Id="1" Count="1" />
+    </LineIds>
+    <LineIds Name="ShelfElement.row.Set">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="ShelfElement.store">
+      <LineId Id="1" Count="1" />
+    </LineIds>
+    <LineIds Name="ShelfElement.unload">
+      <LineId Id="1" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

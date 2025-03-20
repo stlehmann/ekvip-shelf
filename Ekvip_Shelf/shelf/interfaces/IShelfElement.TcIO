@@ -3,14 +3,22 @@
   <Itf Name="IShelfElement" Id="{e7e6a03c-e907-449d-820d-42f4fa64c398}">
     <Declaration><![CDATA[INTERFACE IShelfElement EXTENDS __System.IQueryInterface
 ]]></Declaration>
+    <Property Name="column" Id="{32631a7f-8dfd-4df9-8f11-b4b9842ac2eb}">
+      <Declaration><![CDATA[PROPERTY column : UINT]]></Declaration>
+      <Get Name="Get" Id="{8a224268-bc64-468f-8181-173205f86679}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{3a925064-f820-41b9-8082-1438218833a2}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+      </Set>
+    </Property>
     <Property Name="isOccupied" Id="{547b9917-fc67-4bfb-ae0e-9272d2a52196}">
       <Declaration><![CDATA[PROPERTY isOccupied : BOOL]]></Declaration>
       <Get Name="Get" Id="{33273cc6-5bfa-4954-8eda-7e21e31f4a3a}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
-      <Set Name="Set" Id="{0d3febe8-7e58-4dfc-9b31-0a1a489fbee5}">
-        <Declaration><![CDATA[]]></Declaration>
-      </Set>
     </Property>
     <Property Name="part" Id="{8637dcc2-0164-485b-8793-1704ef10be62}">
       <Declaration><![CDATA[PROPERTY part : IPart
@@ -18,9 +26,30 @@
       <Get Name="Get" Id="{7e3041fa-e039-4378-b6a2-a537eed22e9b}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
-      <Set Name="Set" Id="{84692091-b236-4b41-abc2-f93af9faad09}">
+    </Property>
+    <Property Name="row" Id="{8466aa0f-1ab3-4bab-9f1f-2e8d902e2462}">
+      <Declaration><![CDATA[PROPERTY row : UINT]]></Declaration>
+      <Get Name="Get" Id="{a6154b4a-ca77-4c85-afcb-c858b458aaa5}">
         <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{93fbf9a3-ca89-4e7b-809b-d40d2fb0aeea}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
       </Set>
     </Property>
+    <Method Name="store" Id="{21e6b8df-c63b-4f87-90d2-f80134440984}">
+      <Declaration><![CDATA[METHOD store : BOOL
+VAR_INPUT
+	part: IPart;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="unload" Id="{57a95e5b-469c-44f9-8e48-f1ae635b62e6}">
+      <Declaration><![CDATA[METHOD unload : IPart
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
   </Itf>
 </TcPlcObject>

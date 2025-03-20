@@ -34,10 +34,10 @@ END_VAR
         <Declaration><![CDATA[]]></Declaration>
       </Get>
     </Property>
-    <Method Name="storePart" Id="{bf45d5a5-c04c-41d8-9b4c-21d3ef1d6150}">
-      <Declaration><![CDATA[METHOD storePart : BOOL
+    <Method Name="storeNextPart" Id="{72322ec6-a5a8-48de-898b-606ab0d9ad0e}">
+      <Declaration><![CDATA[METHOD storeNextPart : BOOL
 VAR_INPUT
-	element: IShelfElement;
+	part: IPart;
 END_VAR
 ]]></Declaration>
     </Method>
@@ -48,7 +48,7 @@ END_VAR
 ]]></Declaration>
     </Method>
     <Method Name="unloadPartById" Id="{b38da53a-8e36-43d8-b398-1d52ab51a0ae}">
-      <Declaration><![CDATA[METHOD unloadPartById : BOOL
+      <Declaration><![CDATA[METHOD unloadPartById : IPart
 VAR_INPUT
 	partId: STRING(23);
 END_VAR

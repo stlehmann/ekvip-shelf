@@ -16,6 +16,13 @@
     <Implicit_KindOfTask>{3c1fd330-b08d-45a8-b5ae-70aa17741a7c}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{25a04f6c-870a-4db0-aeec-15878d9da1a0}</Implicit_Jitter_Distribution>
     <LibraryReferences>{f0a4074e-7bee-41ab-bcf5-0091bf16b8b5}</LibraryReferences>
+    <Released>false</Released>
+    <Title>Shelf</Title>
+    <AllowChecksForLibrary>false</AllowChecksForLibrary>
+    <POUsForPropertyAccessIncluded>false</POUsForPropertyAccessIncluded>
+    <GlobalVersionStructureIncluded>false</GlobalVersionStructureIncluded>
+    <ProjectVersion>0.0.1</ProjectVersion>
+    <Company>Stefan Lehmann</Company>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="interfaces" />

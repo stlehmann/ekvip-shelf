@@ -10,8 +10,8 @@ VAR
 	rowCount : UINT;
    	columnCount : UINT;
 	spaces: ARRAY[0..MAX_ROWS, 0..MAX_COLUMNS] OF ShelfElement();
-	freeSpaces: FB_DataSetFifo;
-	occupiedSpaces: FB_DataSetFifo;
+	freeSpaces: FifoBuffer;
+	occupiedSpaces: FifoBuffer;
 END_VAR
 VAR CONSTANT
 	MAX_COLUMNS: INT := 1000;
@@ -76,9 +76,26 @@ getNextOccupiedSpace := occupiedShelfElement;]]></ST>
     <Method Name="getShelfSpaceByPartId" Id="{511bbb8d-27ef-45bd-82df-09f9fc9580d8}">
       <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
 METHOD getShelfSpaceByPartId : IShelfElement
-]]></Declaration>
+VAR_INPUT
+	partId: String(23);
+END_VAR
+VAR
+	i: UINT;
+	j: UINT;
+	shelfElement: IShelfElement;
+END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[FOR i:=0 TO THIS^.rowCount DO
+	FOR j:=0 TO THIS^.columnCount DO
+		shelfElement := THIS^.spaces[i, j];
+		IF NOT(shelfElement.part = 0) THEN
+			IF shelfElement.part.id = partId THEN
+				getShelfSpaceByPartId := shelfElement;
+				RETURN;
+			END_IF;
+		END_IF
+	END_FOR
+END_FOR]]></ST>
       </Implementation>
     </Method>
     <Property Name="m" Id="{49c9368a-155b-4ec9-9182-4096be6564af}">
@@ -136,18 +153,31 @@ END_VAR
     </Method>
     <Method Name="unloadNextPart" Id="{f22afc7e-eb53-44fa-bdab-39ad3d421548}">
       <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
-METHOD unloadNextPart : BOOL
-]]></Declaration>
+METHOD unloadNextPart : IPart
+VAR
+	shelfElement: IShelfElement;
+END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[shelfElement := THIS^.getNextOccupiedSpace();
+unloadNextPart := shelfElement.part;
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="unloadPartById" Id="{d135e5b2-c295-4118-a419-3f9938e966fc}">
       <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
 METHOD unloadPartById : BOOL
-]]></Declaration>
+VAR_INPUT
+	partId: STRING(23);
+END_VAR
+VAR
+	shelfElement: IShelfElement;
+	part: IPart;
+END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[shelfElement := THIS^.getShelfSpaceByPartId(partId);
+IF NOT(shelfElement = 0) THEN
+	part := shelfElement.part;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="Shelf">
@@ -170,7 +200,16 @@ METHOD unloadPartById : BOOL
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.getShelfSpaceByPartId">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="1" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="3" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.m.Get">
       <LineId Id="2" Count="0" />
@@ -187,10 +226,11 @@ METHOD unloadPartById : BOOL
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.unloadNextPart">
+      <LineId Id="2" Count="1" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.unloadPartById">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="3" />
     </LineIds>
   </POU>
 </TcPlcObject>

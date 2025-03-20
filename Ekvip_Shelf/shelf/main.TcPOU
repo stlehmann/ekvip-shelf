@@ -3,23 +3,42 @@
   <POU Name="main" Id="{a5da58b8-5a34-42e4-a5de-1b0ec0c09d5b}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM main
 VAR
-	init: BOOL := True;
+	addPart1: BOOL := FALSE;
+	addPart2: BOOL := FALSE;
+	getShelfSpaceByPartId: BOOL := FALSE;
 	shelf: Shelf(2, 2);
-	part: Part('mypartid');
-	space: IShelfElement;
+	part1: Part('part1');
+	part2: Part('part2');
+	shelfElement: IShelfElement;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF init THEN
-	shelf.storeNextPart(part);
-	init := FALSE;
-END_IF;]]></ST>
+      <ST><![CDATA[IF addPart1 THEN
+	shelf.storeNextPart(part1);
+	addPart1 := FALSE;
+END_IF;
+
+IF addPart2 THEN
+	shelf.storeNextPart(part2);
+	addPart2 := FALSE;
+END_IF;
+
+IF getShelfSpaceByPartId THEN
+	shelfElement := shelf.getShelfSpaceByPartId('part2');
+	getShelfSpaceByPartId := FALSE;
+END_IF;
+
+]]></ST>
     </Implementation>
     <LineIds Name="main">
-      <LineId Id="8" Count="0" />
-      <LineId Id="5" Count="0" />
-      <LineId Id="10" Count="0" />
-      <LineId Id="9" Count="0" />
+      <LineId Id="30" Count="3" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="35" Count="4" />
+      <LineId Id="17" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

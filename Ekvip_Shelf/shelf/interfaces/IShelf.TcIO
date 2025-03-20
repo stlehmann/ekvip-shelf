@@ -18,6 +18,7 @@ END_VAR
     <Method Name="getShelfSpaceByPartId" Id="{8a7fb1d2-7c90-4ef1-be25-d9a367ccd3c7}">
       <Declaration><![CDATA[METHOD getShelfSpaceByPartId : IShelfElement
 VAR_INPUT
+	partId: STRING(23);
 END_VAR
 ]]></Declaration>
     </Method>
@@ -41,7 +42,7 @@ END_VAR
 ]]></Declaration>
     </Method>
     <Method Name="unloadNextPart" Id="{a07823c0-25d9-47b7-9924-4d72f5336bfb}">
-      <Declaration><![CDATA[METHOD unloadNextPart : BOOL
+      <Declaration><![CDATA[METHOD unloadNextPart : IPart
 VAR_INPUT
 END_VAR
 ]]></Declaration>
@@ -49,6 +50,7 @@ END_VAR
     <Method Name="unloadPartById" Id="{b38da53a-8e36-43d8-b398-1d52ab51a0ae}">
       <Declaration><![CDATA[METHOD unloadPartById : BOOL
 VAR_INPUT
+	partId: STRING(23);
 END_VAR
 ]]></Declaration>
     </Method>

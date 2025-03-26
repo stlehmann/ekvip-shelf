@@ -7,7 +7,7 @@ VAR
 	shelfElements: ARRAY[0..100] OF ShelfElement;
 	
 	flexibuf: FlexiBuffer;
-	state: ETestFlexiBufferState;
+	state: TestFlexiBufferState;
 	
 	shelfElement: IShelfElement;
 	
@@ -20,21 +20,21 @@ END_VAR
 shelf.getNextFreeSpace();
 
 CASE state OF
-ETestFlexiBufferState.INIT:
+TestFlexiBufferState.INIT:
 	FOR i:=0 TO 3 DO
 		usedElementsCount := usedElementsCount + 1;
 		flexibuf.addElement(shelfElements[usedElementsCount - 1]);
 	END_FOR;
-	state := ETestFlexiBufferState.WAIT;
+	state := TestFlexiBufferState.WAIT;
 	
-ETestFlexiBufferState.ADD_ELEMENT:
+TestFlexiBufferState.ADD_ELEMENT:
 	usedElementsCount := usedElementsCount + 1;	
 	flexibuf.addElement(shelfElements[usedElementsCount-1]);	
-	state := ETestFlexiBufferState.WAIT;
+	state := TestFlexiBufferState.WAIT;
 
-ETestFlexiBufferState.REMOVE_ELEMENT:
+TestFlexiBufferState.REMOVE_ELEMENT:
 	shelfElement := flexibuf.removeFirstElement();
-	state := ETestFlexiBufferState.WAIT;
+	state := TestFlexiBufferState.WAIT;
 	
 END_CASE]]></ST>
     </Implementation>

@@ -13,7 +13,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{FC1E2943-6DE6-448D-9CC9-41CF93FE385E}" Name="shelf" PrjFilePath="shelf\shelf.plcproj" TmcFilePath="shelf\shelf.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{1201F02C-4E6C-5236-BDDC-CAB96F3E93BC}" TmcPath="shelf\shelf.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{2B84E0DE-D87D-AA8D-B6E2-565DFA6DFA0A}" TmcPath="shelf\shelf.tmc">
 					<Name>shelf Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

@@ -27,6 +27,7 @@
   <ItemGroup>
     <Folder Include="interfaces" />
     <Folder Include="classes" />
+    <Folder Include="enums" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassDiagram.TcCD">
@@ -47,7 +48,10 @@
     <Compile Include="classes\ShelfElement.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ETestFlexiBufferState.TcDUT">
+    <Compile Include="enums\MainState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="enums\TestFlexiBufferState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="interfaces\IPart.TcIO">

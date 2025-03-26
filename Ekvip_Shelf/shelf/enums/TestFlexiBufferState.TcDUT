@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <DUT Name="ETestFlexiBufferState" Id="{0a35cf6a-30e8-4a67-8f12-0005a74732e3}">
+  <DUT Name="TestFlexiBufferState" Id="{0a35cf6a-30e8-4a67-8f12-0005a74732e3}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 {attribute 'strict'}
 {attribute 'to_string'}
-TYPE ETestFlexiBufferState :
+TYPE TestFlexiBufferState :
 (
 	INIT,
 	ADD_ELEMENT,

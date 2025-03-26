@@ -41,6 +41,15 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
+    <Method Name="storePartByRowColumn" Id="{5793e423-3140-447d-a0e1-fbf7b28d0108}">
+      <Declaration><![CDATA[METHOD storePartByRowColumn : IShelfElement
+VAR_INPUT
+	part: IPart;
+	row: UINT;
+	column: UINT;
+END_VAR
+]]></Declaration>
+    </Method>
     <Method Name="unloadNextPart" Id="{a07823c0-25d9-47b7-9924-4d72f5336bfb}">
       <Declaration><![CDATA[METHOD unloadNextPart : IPart
 VAR_INPUT
@@ -51,6 +60,14 @@ END_VAR
       <Declaration><![CDATA[METHOD unloadPartById : IPart
 VAR_INPUT
 	partId: STRING(23);
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="unloadPartByRowColumn" Id="{22d85e6e-d2ea-480f-8d42-144f11918a2a}">
+      <Declaration><![CDATA[METHOD unloadPartByRowColumn : IPart
+VAR_INPUT
+	row: UINT;
+	column: UINT;
 END_VAR
 ]]></Declaration>
     </Method>

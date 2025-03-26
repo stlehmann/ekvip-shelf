@@ -45,6 +45,14 @@ MainState.UNLOAD_NEXT_OCCUPIED_SHELF_SPACE:
 
 MainState.UNLOAD_PART_BY_ID:
 	part := shelf.unloadPartById('part2');
+	
+// inventory methods
+MainState.STORE_PART_BY_ROW_COLUMN:
+	shelf.storePartByRowColumn(part1, 1, 1);
+	
+MainState.UNLOAD_PART_BY_ROW_COLUMN:
+	part := shelf.unloadPartByRowColumn( 1, 1);
+
 END_CASE
 
 state := MainState.WAIT;
@@ -74,6 +82,10 @@ state := MainState.WAIT;
       <LineId Id="109" Count="3" />
       <LineId Id="96" Count="0" />
       <LineId Id="113" Count="0" />
+      <LineId Id="115" Count="4" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="122" Count="0" />
       <LineId Id="85" Count="0" />
       <LineId Id="91" Count="0" />
       <LineId Id="90" Count="0" />

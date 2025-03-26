@@ -143,6 +143,30 @@ IF NOT (shelfElement = 0) THEN
 END_IF]]></ST>
       </Implementation>
     </Method>
+    <Method Name="storePartByRowColumn" Id="{df6ea2bc-f8c8-47c9-b1e0-3886006214d8}">
+      <Declaration><![CDATA[{warning 'Add method implementation '}
+METHOD storePartByRowColumn : IShelfElement
+VAR_INPUT
+	part: IPart;
+	row	: UINT;
+	column	: UINT;
+END_VAR
+VAR
+	shelfElement: IShelfElement;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[shelfElement := THIS^.spaces[row, column];
+
+shelfElement.store(part);
+
+IF NOT shelfElement.isOccupied THEN
+	THIS^.freeSpaces.removeElement(shelfElement);
+	THIS^.occupiedSpaces.addElement(shelfElement);
+END_IF;
+]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="unloadNextPart" Id="{f22afc7e-eb53-44fa-bdab-39ad3d421548}">
       <Declaration><![CDATA[{warning 'Methodenimplementierung hinzufügen'}
 METHOD unloadNextPart : IPart
@@ -178,6 +202,29 @@ IF NOT(shelfElement = 0) THEN
 	THIS^.freeSpaces.addElement(shelfElement);
 	unloadPartById := shelfElement.unload();
 END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="unloadPartByRowColumn" Id="{981f29a5-f5a2-4f2f-bcad-f53e785fe83e}">
+      <Declaration><![CDATA[{warning 'Add method implementation '}
+METHOD unloadPartByRowColumn : IPart
+VAR_INPUT
+	row	: UINT;
+	column	: UINT;
+END_VAR
+VAR
+	shelfElement: IShelfElement;
+	part: IPart;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[shelfElement := THIS^.spaces[row, column];
+IF shelfElement.isOccupied THEN
+	part := shelfElement.unload();
+	THIS^.freeSpaces.addElement(shelfElement);
+	THIS^.occupiedSpaces.removeElement(shelfElement);
+END_IF
+
+unloadPartByRowColumn := part;]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="Shelf">
@@ -224,6 +271,9 @@ END_IF]]></ST>
     <LineIds Name="Shelf.storeNextPart">
       <LineId Id="1" Count="4" />
     </LineIds>
+    <LineIds Name="Shelf.storePartByRowColumn">
+      <LineId Id="1" Count="8" />
+    </LineIds>
     <LineIds Name="Shelf.unloadNextPart">
       <LineId Id="5" Count="0" />
       <LineId Id="2" Count="0" />
@@ -237,6 +287,9 @@ END_IF]]></ST>
       <LineId Id="1" Count="1" />
       <LineId Id="5" Count="1" />
       <LineId Id="3" Count="1" />
+    </LineIds>
+    <LineIds Name="Shelf.unloadPartByRowColumn">
+      <LineId Id="1" Count="7" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -16,12 +16,14 @@ VAR
 	
 	shelfElement: IShelfElement;
 	part: IPart;
+	
+	unloadPartById: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Main function for testing some functionality
 
-// Add parts
+// ADD parts
 IF addPart1 THEN
 	shelf.storeNextPart(part1);
 	addPart1 := FALSE;
@@ -54,6 +56,13 @@ IF unloadNextOccupiedShelfSpace THEN
 	unloadNextOccupiedShelfSpace := FALSE;
 END_IF
 
+IF unloadPartById THEN
+	part := shelf.unloadPartById('part2');
+	unloadPartById := FALSE;
+END_IF
+
+ 
+// testFlexiBuffer();
 ]]></ST>
     </Implementation>
     <LineIds Name="main">
@@ -84,7 +93,14 @@ END_IF
       <LineId Id="63" Count="1" />
       <LineId Id="66" Count="0" />
       <LineId Id="65" Count="0" />
-      <LineId Id="61" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="73" Count="0" />
       <LineId Id="17" Count="0" />
     </LineIds>
   </POU>

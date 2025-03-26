@@ -47,6 +47,9 @@
     <Compile Include="classes\ShelfElement.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ETestFlexiBufferState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="interfaces\IPart.TcIO">
       <SubType>Code</SubType>
     </Compile>
@@ -60,6 +63,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="testFlexiBuffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

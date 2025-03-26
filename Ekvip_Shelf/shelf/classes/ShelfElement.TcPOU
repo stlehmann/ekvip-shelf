@@ -107,7 +107,9 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[unload := THIS^.part;
-THIS^._part := 0;]]></ST>
+THIS^._part := 0;
+THIS^._isOccupied := FALSE;
+]]></ST>
       </Implementation>
     </Method>
     <LineIds Name="ShelfElement">
@@ -135,7 +137,7 @@ THIS^._part := 0;]]></ST>
       <LineId Id="1" Count="1" />
     </LineIds>
     <LineIds Name="ShelfElement.unload">
-      <LineId Id="1" Count="1" />
+      <LineId Id="1" Count="3" />
     </LineIds>
   </POU>
 </TcPlcObject>

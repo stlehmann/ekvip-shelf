@@ -14,8 +14,8 @@ VAR
 	occupiedSpaces: FifoBuffer;
 END_VAR
 VAR CONSTANT
-	MAX_COLUMNS: INT := 1000;
-	MAX_ROWS: INT := 1000;
+	MAX_COLUMNS: INT := 1;
+	MAX_ROWS: INT := 1;
 END_VAR
 ]]></Declaration>
     <Implementation>

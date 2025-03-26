@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="testShelf" Id="{28542b85-75f4-4982-b832-a3051528a400}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM testShelf
+VAR
+	shelf: Shelf(2, 2);
+	part1: Part('part1');
+	part2: Part('part2');
+	
+	shelfElement: IShelfElement;
+	part: IPart;
+	
+	unloadPartById: BOOL;
+	state: MainState;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE state OF
+MainState.INIT:
+	;
+
+// add parts
+MainState.ADD_PART1:
+	shelf.storeNextPart(part1);
+	
+MainState.ADD_PART2:
+	shelf.storeNextPart(part2);
+	
+// get spaces
+MainState.GET_NEXT_FREE_SHELF_SPACE:
+	shelfElement := shelf.getNextFreeSpace();
+
+MainState.GET_NEXT_OCCUPIED_SHELF_SPACE:
+	shelfElement := shelf.getNextOccupiedSpace();
+
+MainState.GET_SHELF_SPACE_BY_PARTID:
+	shelfElement := shelf.getShelfSpaceByPartId('part2');
+
+// unload parts	
+MainState.UNLOAD_NEXT_OCCUPIED_SHELF_SPACE:
+	part := shelf.unloadNextPart();
+
+MainState.UNLOAD_PART_BY_ID:
+	part := shelf.unloadPartById('part2');
+	
+// inventory methods
+MainState.STORE_PART_BY_ROW_COLUMN:
+	shelf.storePartByRowColumn(part1, 1, 1);
+	
+MainState.UNLOAD_PART_BY_ROW_COLUMN:
+	part := shelf.unloadPartByRowColumn( 1, 1);
+END_CASE
+
+state := MainState.WAIT;
+ ]]></ST>
+    </Implementation>
+    <LineIds Name="testShelf">
+      <LineId Id="1" Count="37" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

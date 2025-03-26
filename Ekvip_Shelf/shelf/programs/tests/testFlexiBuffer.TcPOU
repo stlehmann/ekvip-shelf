@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1">
-  <POU Name="testFlexiBuffer" Id="{9bf03d54-e4de-47fd-9738-beea5cb57baa}" SpecialFunc="None">
+  <POU Name="testFlexiBuffer" Id="{ac9acdb8-d283-4f96-994f-f9fabf800948}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM testFlexiBuffer
 VAR
 	shelf : Shelf(2, 2);

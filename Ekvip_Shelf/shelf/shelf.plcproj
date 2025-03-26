@@ -28,6 +28,8 @@
     <Folder Include="interfaces" />
     <Folder Include="classes" />
     <Folder Include="enums" />
+    <Folder Include="programs" />
+    <Folder Include="programs\tests" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassDiagram.TcCD">
@@ -63,13 +65,16 @@
     <Compile Include="interfaces\IShelfElement.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="main.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="testFlexiBuffer.TcPOU">
+    <Compile Include="programs\main.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="programs\tests\testFlexiBuffer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="programs\tests\testShelf.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

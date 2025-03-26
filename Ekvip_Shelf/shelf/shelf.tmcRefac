@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="66633ec3-d8db-49dd-8398-bf017bbd5c91">REMOVEELEMENT</Type>
+      <From>removeElement</From>
+      <To>removeFirstElement</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="13cb2c79-6e26-4ae7-9269-311e49878b44">REMOVEELEMENTBYPARTID</Type>
+      <From>removeElement</From>
+      <To>removeElementByIndex</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="FlexiBuffer" Id="{fa317ff0-9fe9-4993-93d3-1e86f6ad8c4a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FlexiBuffer
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	buffer: ARRAY[0..MAX_BUFFER_SIZE - 1] OF IShelfElement;
+	count: UINT := 0;
+END_VAR
+VAR CONSTANT
+	MAX_BUFFER_SIZE : UINT := 100;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="addElement" Id="{2e7c6314-b701-4d12-b5a8-c0af0877606d}">
+      <Declaration><![CDATA[METHOD addElement : BOOL
+VAR_INPUT
+	shelfElement: IShelfElement;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.buffer[THIS^.count] := shelfElement;
+THIS^.count := THIS^.count + 1;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="removeElementByIndex" Id="{13cb2c79-6e26-4ae7-9269-311e49878b44}">
+      <Declaration><![CDATA[METHOD removeElementByIndex : IShelfElement
+VAR_INPUT
+	index: UINT;
+END_VAR
+
+VAR
+	shelfElement: IShelfElement;
+	i: UINT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[shelfElement := THIS^.buffer[index];
+THIS^.count := THIS^.count - 1;
+
+// move elements left in the array
+FOR i:=index TO THIS^.count - 1 DO  
+	THIS^.buffer[i] := THIS^.buffer[i + 1];
+END_FOR
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="removeFirstElement" Id="{66633ec3-d8db-49dd-8398-bf017bbd5c91}">
+      <Declaration><![CDATA[METHOD removeFirstElement : IShelfElement
+VAR_INPUT
+END_VAR
+VAR
+	i: UINT;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[shelfElement := THIS^.buffer[0];
+FOR i:=1 TO THIS^.MAX_BUFFER_SIZE DO
+	THIS^.buffer[i-1] := THIS^.count - 1; 
+END_FOR
+THIS^.count := THIS^.count - 1;
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FlexiBuffer">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="FlexiBuffer.addElement">
+      <LineId Id="1" Count="2" />
+    </LineIds>
+    <LineIds Name="FlexiBuffer.removeElementByIndex">
+      <LineId Id="1" Count="7" />
+    </LineIds>
+    <LineIds Name="FlexiBuffer.removeFirstElement">
+      <LineId Id="1" Count="5" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

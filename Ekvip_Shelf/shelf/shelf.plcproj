@@ -35,6 +35,9 @@
     <Compile Include="classes\FifoBuffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\FlexiBuffer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="classes\Part.TcPOU">
       <SubType>Code</SubType>
     </Compile>

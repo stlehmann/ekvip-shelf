@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="testFlexiBuffer" Id="{9bf03d54-e4de-47fd-9738-beea5cb57baa}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM testFlexiBuffer
+VAR
+	shelf : Shelf(2, 2);
+	shelfElements: ARRAY[0..100] OF ShelfElement;
+	
+	flexibuf: FlexiBuffer;
+	state: TestFlexiBufferState;
+	
+	shelfElement: IShelfElement;
+	
+	usedElementsCount: UINT := 0;
+	i: UINT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+shelf.getNextFreeSpace();
+
+CASE state OF
+TestFlexiBufferState.INIT:
+	FOR i:=0 TO 3 DO
+		usedElementsCount := usedElementsCount + 1;
+		flexibuf.addElement(shelfElements[usedElementsCount - 1]);
+	END_FOR;
+	state := TestFlexiBufferState.WAIT;
+	
+TestFlexiBufferState.ADD_ELEMENT:
+	usedElementsCount := usedElementsCount + 1;	
+	flexibuf.addElement(shelfElements[usedElementsCount-1]);	
+	state := TestFlexiBufferState.WAIT;
+
+TestFlexiBufferState.REMOVE_ELEMENT:
+	shelfElement := flexibuf.removeFirstElement();
+	state := TestFlexiBufferState.WAIT;
+	
+END_CASE]]></ST>
+    </Implementation>
+    <LineIds Name="testFlexiBuffer">
+      <LineId Id="1" Count="20" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

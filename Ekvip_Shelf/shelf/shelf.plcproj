@@ -27,12 +27,16 @@
   <ItemGroup>
     <Folder Include="interfaces" />
     <Folder Include="classes" />
+    <Folder Include="enums" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassDiagram.TcCD">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\FifoBuffer.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\FlexiBuffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\Part.TcPOU">
@@ -42,6 +46,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\ShelfElement.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="enums\MainState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="enums\TestFlexiBufferState.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="interfaces\IPart.TcIO">
@@ -57,6 +67,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="testFlexiBuffer.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

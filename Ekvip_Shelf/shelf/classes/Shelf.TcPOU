@@ -10,8 +10,8 @@ VAR
 	rowCount : UINT;
    	columnCount : UINT;
 	spaces: ARRAY[0..MAX_ROWS, 0..MAX_COLUMNS] OF ShelfElement();
-	freeSpaces: FifoBuffer;
-	occupiedSpaces: FifoBuffer;
+	freeSpaces: FlexiBuffer;
+	occupiedSpaces: FlexiBuffer;
 END_VAR
 VAR CONSTANT
 	MAX_COLUMNS: INT := 1;
@@ -48,7 +48,7 @@ FOR i:=0 TO nRows - 1 DO
 		shelfElement := THIS^.spaces[i, j];
 		shelfElement.row := i;
 		shelfElement.column := j;
-		THIS^.freeSpaces.A_Add(in := shelfElement); 
+		THIS^.freeSpaces.addElement(shelfElement); 
 	END_FOR
 END_FOR
 ]]></ST>
@@ -61,8 +61,7 @@ VAR
 	freeShelfElement: IShelfElement;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^.freeSpaces.A_Get( out => freeShelfElement);
-getNextFreeSpace := freeShelfElement;
+        <ST><![CDATA[getNextFreeSpace := THIS^.freeSpaces.getFirstElement();
 ]]></ST>
       </Implementation>
     </Method>
@@ -73,8 +72,7 @@ VAR
 	occupiedShelfElement: IShelfElement;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^.occupiedSpaces.A_Get( out => occupiedShelfElement);
-getNextOccupiedSpace := occupiedShelfElement;]]></ST>
+        <ST><![CDATA[getNextOccupiedSpace := THIS^.occupiedSpaces.getFirstElement();]]></ST>
       </Implementation>
     </Method>
     <Method Name="getShelfSpaceByPartId" Id="{511bbb8d-27ef-45bd-82df-09f9fc9580d8}">
@@ -138,10 +136,10 @@ VAR
 	shelfElement: IShelfElement;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[THIS^.freeSpaces.A_Remove(out=>shelfElement);
+        <ST><![CDATA[shelfElement := THIS^.freeSpaces.removeFirstElement();
 IF NOT (shelfElement = 0) THEN
 	shelfElement.store(part);
-	THIS^.occupiedSpaces.A_Add(in:=shelfElement);
+	THIS^.occupiedSpaces.addElement(shelfElement);
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -153,13 +151,13 @@ VAR
 END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[// remove element from occupied spaces
-THIS^.occupiedSpaces.A_Remove( out => shelfElement);
+shelfElement := THIS^.occupiedSpaces.removeFirstElement();
 
 // store part and set to 0
 unloadNextPart := shelfElement.unload();
 
 // add to free spaces
-THIS^.freeSpaces.A_Add(in:=shelfElement);
+THIS^.freeSpaces.addElement(shelfElement);
 ]]></ST>
       </Implementation>
     </Method>
@@ -176,6 +174,8 @@ END_VAR]]></Declaration>
       <Implementation>
         <ST><![CDATA[shelfElement := THIS^.getShelfSpaceByPartId(partId);
 IF NOT(shelfElement = 0) THEN
+	THIS^.occupiedSpaces.removeElement(shelfElement);
+	THIS^.freeSpaces.addElement(shelfElement);
 	unloadPartById := shelfElement.unload();
 END_IF]]></ST>
       </Implementation>
@@ -197,12 +197,10 @@ END_IF]]></ST>
     </LineIds>
     <LineIds Name="Shelf.getNextFreeSpace">
       <LineId Id="4" Count="0" />
-      <LineId Id="1" Count="0" />
       <LineId Id="3" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.getNextOccupiedSpace">
       <LineId Id="3" Count="0" />
-      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.getShelfSpaceByPartId">
       <LineId Id="1" Count="1" />
@@ -232,13 +230,13 @@ END_IF]]></ST>
       <LineId Id="8" Count="0" />
       <LineId Id="7" Count="0" />
       <LineId Id="9" Count="0" />
-      <LineId Id="11" Count="0" />
-      <LineId Id="6" Count="0" />
-      <LineId Id="4" Count="0" />
+      <LineId Id="11" Count="2" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.unloadPartById">
-      <LineId Id="1" Count="3" />
+      <LineId Id="1" Count="1" />
+      <LineId Id="5" Count="1" />
+      <LineId Id="3" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

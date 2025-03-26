@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="MainState" Id="{6f87ce71-f051-4fc3-bf50-23e4b85350d4}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+{attribute 'to_string'}
+TYPE MainState :
+(
+	INIT,
+	WAIT,
+	ADD_PART1,
+	ADD_PART2,
+	GET_NEXT_FREE_SHELF_SPACE,
+	GET_NEXT_OCCUPIED_SHELF_SPACE,
+	GET_SHELF_SPACE_BY_PARTID,
+	UNLOAD_NEXT_OCCUPIED_SHELF_SPACE,
+	UNLOAD_PART_BY_ID
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

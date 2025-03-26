@@ -5,16 +5,23 @@
 VAR
 	addPart1: BOOL := FALSE;
 	addPart2: BOOL := FALSE;
+	getNextFreeShelfSpace: BOOL := FALSE;
+	getNextOccupiedShelfSpace: BOOL := FALSE;
 	getShelfSpaceByPartId: BOOL := FALSE;
+	unloadNextOccupiedShelfSpace: BOOL := FALSE;
+	
 	shelf: Shelf(2, 2);
 	part1: Part('part1');
 	part2: Part('part2');
+	
 	shelfElement: IShelfElement;
+	part: IPart;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Main function for testing some functionality
 
+// Add parts
 IF addPart1 THEN
 	shelf.storeNextPart(part1);
 	addPart1 := FALSE;
@@ -25,21 +32,59 @@ IF addPart2 THEN
 	addPart2 := FALSE;
 END_IF;
 
+// Get spaces
+IF getNextFreeShelfSpace THEN
+	shelfElement := shelf.getNextFreeSpace();
+	getNextFreeShelfSpace := FALSE;
+END_IF
+
+IF getNextOccupiedShelfSpace THEN
+	shelfElement := shelf.getNextOccupiedSpace();
+	getNextOccupiedShelfSpace := FALSE;
+END_IF
+
 IF getShelfSpaceByPartId THEN
 	shelfElement := shelf.getShelfSpaceByPartId('part2');
 	getShelfSpaceByPartId := FALSE;
 END_IF;
+
+// Unload spaces
+IF unloadNextOccupiedShelfSpace THEN
+	part := shelf.unloadNextPart();
+	unloadNextOccupiedShelfSpace := FALSE;
+END_IF
+
 ]]></ST>
     </Implementation>
     <LineIds Name="main">
-      <LineId Id="46" Count="1" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="47" Count="0" />
       <LineId Id="30" Count="3" />
       <LineId Id="41" Count="0" />
       <LineId Id="40" Count="0" />
       <LineId Id="42" Count="0" />
       <LineId Id="34" Count="0" />
-      <LineId Id="43" Count="1" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="44" Count="0" />
       <LineId Id="35" Count="3" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="63" Count="1" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="61" Count="0" />
       <LineId Id="17" Count="0" />
     </LineIds>
   </POU>

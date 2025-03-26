@@ -152,8 +152,14 @@ VAR
 	shelfElement: IShelfElement;
 END_VAR]]></Declaration>
       <Implementation>
-        <ST><![CDATA[shelfElement := THIS^.getNextOccupiedSpace();
-unloadNextPart := shelfElement.part;
+        <ST><![CDATA[// remove element from occupied spaces
+THIS^.occupiedSpaces.A_Remove( out => shelfElement);
+
+// store part and set to 0
+unloadNextPart := shelfElement.unload();
+
+// add to free spaces
+THIS^.freeSpaces.A_Add(in:=shelfElement);
 ]]></ST>
       </Implementation>
     </Method>
@@ -221,7 +227,14 @@ END_IF]]></ST>
       <LineId Id="1" Count="4" />
     </LineIds>
     <LineIds Name="Shelf.unloadNextPart">
-      <LineId Id="2" Count="1" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="4" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.unloadPartById">

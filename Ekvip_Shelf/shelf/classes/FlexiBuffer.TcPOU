@@ -56,9 +56,13 @@ END_VAR]]></Declaration>
 IF THIS^.count > 0 THEN
 	FOR i:=0 TO THIS^.count - 1 DO
 		IF THIS^.buffer[i] = shelfElement THEN
-			FOR j:=i+1 TO THIS^.count -1 DO
-				THIS^.buffer[j-1] := THIS^.buffer[j];
-			END_FOR
+//			// slower: using for loop		
+//  		FOR j:=i+1 TO THIS^.count -1 DO
+//  			THIS^.buffer[j-1] := THIS^.buffer[j];
+//  		END_FOR
+			
+			// faster: using memmove
+			MEMMOVE(ADR(THIS^.buffer[i]), ADR(THIS^.buffer[i+1]), THIS^.count - i);
 		END_IF;  
 	END_FOR
 	count := count - 1;
@@ -77,9 +81,13 @@ END_VAR
       <Implementation>
         <ST><![CDATA[IF THIS^.count > 0 THEN
 	removeFirstElement := THIS^.buffer[0];
-	FOR i:=1 TO THIS^.COUNT - 1 DO
-		THIS^.buffer[i-1] := THIS^.buffer[i]; 
-	END_FOR
+// 	// slower: using for loop
+// 	FOR i:=1 TO THIS^.COUNT - 1 DO
+// 		THIS^.buffer[i-1] := THIS^.buffer[i]; 
+// 	END_FOR
+	
+	// faster: memmove
+	MEMMOVE(ADR(THIS^.buffer[0]), ADR(THIS^.buffer[1]), THIS^.count - 1);
 	THIS^.count := THIS^.count - 1;
 END_IF;
 ]]></ST>
@@ -95,10 +103,20 @@ END_IF;
       <LineId Id="1" Count="3" />
     </LineIds>
     <LineIds Name="FlexiBuffer.removeElement">
-      <LineId Id="1" Count="11" />
+      <LineId Id="1" Count="3" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="6" Count="1" />
+      <LineId Id="16" Count="2" />
+      <LineId Id="8" Count="4" />
     </LineIds>
     <LineIds Name="FlexiBuffer.removeFirstElement">
-      <LineId Id="1" Count="7" />
+      <LineId Id="1" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="3" Count="2" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="6" Count="2" />
     </LineIds>
   </POU>
 </TcPlcObject>

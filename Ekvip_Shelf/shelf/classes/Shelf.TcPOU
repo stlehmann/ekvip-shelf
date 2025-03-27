@@ -177,11 +177,12 @@ END_VAR]]></Declaration>
         <ST><![CDATA[// remove element from occupied spaces
 shelfElement := THIS^.occupiedSpaces.removeFirstElement();
 
-// store part and set to 0
-unloadNextPart := shelfElement.unload();
-
-// add to free spaces
-THIS^.freeSpaces.addElement(shelfElement);
+IF NOT(shelfElement=0) THEN
+	// store part and set to 0
+	unloadNextPart := shelfElement.unload();
+	// add to free spaces
+	THIS^.freeSpaces.addElement(shelfElement);
+END_IF;
 ]]></ST>
       </Implementation>
     </Method>
@@ -277,10 +278,12 @@ unloadPartByRowColumn := part;]]></ST>
     <LineIds Name="Shelf.unloadNextPart">
       <LineId Id="5" Count="0" />
       <LineId Id="2" Count="0" />
+      <LineId Id="14" Count="0" />
       <LineId Id="8" Count="0" />
       <LineId Id="7" Count="0" />
       <LineId Id="9" Count="0" />
-      <LineId Id="11" Count="2" />
+      <LineId Id="16" Count="1" />
+      <LineId Id="15" Count="0" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="Shelf.unloadPartById">

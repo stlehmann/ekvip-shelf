@@ -7,14 +7,13 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Main function for testing some functionality
-
 testShelf();
-
-// testFlexiBuffer();
 ]]></ST>
     </Implementation>
     <LineIds Name="main">
-      <LineId Id="1" Count="5" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="9" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
